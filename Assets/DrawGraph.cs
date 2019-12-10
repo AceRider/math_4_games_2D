@@ -8,15 +8,21 @@ public class DrawGraph : MonoBehaviour
     public int xmax = 200;
     public int ymax = 200;
 
-    Coords startPointXAxis = new Coords(xmax, 0);
-    Coords endPointXAxis = new Coords(-xmax, 0);
+    Coords startPointXAxis;
+    Coords endPointXAxis;
 
-    Coords startPointYAxis = new Coords(0, ymax);
-    Coords endPointYAxis = new Coords(0, -ymax);
+    Coords startPointYAxis;
+    Coords endPointYAxis;
 
     // Start is called before the first frame update
     void Start()
     {
+        startPointXAxis = new Coords(xmax, 0);
+        endPointXAxis = new Coords(-xmax, 0);
+
+        startPointYAxis = new Coords(0, ymax);
+        endPointYAxis = new Coords(0, -ymax);
+
         // x axis
         Coords.DrawLine(startPointXAxis, endPointXAxis, 1, Color.red);
         // y axis
