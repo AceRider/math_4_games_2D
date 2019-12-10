@@ -213,6 +213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 654052248}
   - component: {fileID: 654052249}
+  - component: {fileID: 654052250}
   m_Layer: 0
   m_Name: PointManager
   m_TagString: Untagged
@@ -241,11 +242,24 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 654052247}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 460b96c7a99d30641bee3fd6b4537f57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &654052250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654052247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72f31e232d4080746ae081d6d76af8dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: 20
 --- !u!1 &857154935
 GameObject:
   m_ObjectHideFlags: 0
