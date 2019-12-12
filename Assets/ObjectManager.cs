@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObjectManager : MonoBehaviour
 {
     public GameObject objPrefab;
+    public Vector3 objPosition;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +14,7 @@ public class ObjectManager : MonoBehaviour
                                                             objPrefab.transform.position.z), 
                                                             Quaternion.identity);
         Debug.Log("Fuel Location: " + obj.transform.position);
+        objPosition = obj.transform.position;
     }
 
     // Update is called once per frame
