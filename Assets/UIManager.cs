@@ -9,10 +9,21 @@ public class UIManager : MonoBehaviour
     public GameObject fuel;
     public Text tankPosition;
     public Text fuelPosition;
+    public Text energyAmt;
+
+    public void AddEnergy(string amt)
+    {
+        int n;
+        if (int.TryParse(amt, out n))
+        {
+            energyAmt.text = amt;
+        }
+    }
 
     void Start()
     {
         tankPosition.text = tank.transform.position + "";
+        fuelPosition.text = fuel.GetComponent<ObjectManager>().objPosition + "";
     }
 
     void Update()
