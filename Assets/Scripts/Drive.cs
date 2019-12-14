@@ -44,14 +44,31 @@ public class Drive : MonoBehaviour
     #endregion
     #region Course 4
 
-    Vector3 dir = new Vector2(-0.1f, 0.1f);
+    Vector3 Up = new Vector2(0, 1);
+    Vector3 Right = new Vector2(1, 0);
+    float speed = 0.8f;
     private void Update()
     {
         Vector3 position = this.transform.position;
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.UpArrow))
         {
-            position.x += dir.x;
-            position.y += dir.y;
+            position.x += Up.x * speed;
+            position.y += Up.y * speed;
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            position.x += -Up.x * speed;
+            position.y += -Up.y * speed;
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            position.x += -Right.x * speed;
+            position.y += -Right.y * speed;
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            position.x += Right.x * speed;
+            position.y += Right.y * speed;
         }
         this.transform.position = position;
     }
