@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Coords
+public class CoordsBKP
 {
     float x;
     float y;
     float z;
 
-    public Coords(float _X, float _Y)
+    public CoordsBKP(float _X, float _Y)
     {
         x = _X;
         y = _Y;

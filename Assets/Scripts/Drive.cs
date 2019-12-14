@@ -74,7 +74,7 @@ public class Drive : MonoBehaviour
     //}
     #endregion
     #region Course 4.27
-    float speed = 0.01f;
+    float speed = 5;
     public GameObject fuel;
     Vector3 direction;
     float stoppingDistance = 0.1f;
@@ -82,12 +82,16 @@ public class Drive : MonoBehaviour
     private void Start()
     {
         direction = fuel.transform.position - this.transform.position;
+        Coords dirNormal = HolisticMath.GetNormal(new Coords(direction));
+        direction = dirNormal.ToVector();
     }
 
     private void Update()
     {
+        if(HolisticMath.Distance(new Coords(this.transform.position),
+                                    new Coords(fuel.transform.position)) > stoppingDistance)
         if(Vector3.Distance(this.transform.position, fuel.transform.position) > stoppingDistance)
-            this.transform.position += direction*speed;  
+            this.transform.position += direction * speed * Time.deltaTime;  
     }
 
     #endregion
