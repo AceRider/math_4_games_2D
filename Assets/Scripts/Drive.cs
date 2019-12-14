@@ -44,34 +44,52 @@ public class Drive : MonoBehaviour
     #endregion
     #region Course 4
 
-    Vector3 Up = new Vector2(0, 1);
-    Vector3 Right = new Vector2(1, 0);
-    float speed = 0.8f;
+    //Vector3 Up = new Vector2(0, 1);
+    //Vector3 Right = new Vector2(1, 0);
+    //float speed = 0.8f;
+    //private void Update()
+    //{
+    //    Vector3 position = this.transform.position;
+    //    if (Input.GetKey(KeyCode.UpArrow))
+    //    {
+    //        position.x += Up.x * speed;
+    //        position.y += Up.y * speed;
+    //    }
+    //    else if (Input.GetKey(KeyCode.DownArrow))
+    //    {
+    //        position.x += -Up.x * speed;
+    //        position.y += -Up.y * speed;
+    //    }
+    //    else if (Input.GetKey(KeyCode.LeftArrow))
+    //    {
+    //        position.x += -Right.x * speed;
+    //        position.y += -Right.y * speed;
+    //    }
+    //    else if (Input.GetKey(KeyCode.RightArrow))
+    //    {
+    //        position.x += Right.x * speed;
+    //        position.y += Right.y * speed;
+    //    }
+    //    this.transform.position = position;
+    //}
+    #endregion
+    #region Course 4.27
+    float speed = 0.01f;
+    public GameObject fuel;
+    Vector3 direction;
+    float stoppingDistance = 0.1f;
+
+    private void Start()
+    {
+        direction = fuel.transform.position - this.transform.position;
+    }
+
     private void Update()
     {
-        Vector3 position = this.transform.position;
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            position.x += Up.x * speed;
-            position.y += Up.y * speed;
-        }
-        else if (Input.GetKey(KeyCode.DownArrow))
-        {
-            position.x += -Up.x * speed;
-            position.y += -Up.y * speed;
-        }
-        else if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            position.x += -Right.x * speed;
-            position.y += -Right.y * speed;
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            position.x += Right.x * speed;
-            position.y += Right.y * speed;
-        }
-        this.transform.position = position;
+        if(Vector3.Distance(this.transform.position, fuel.transform.position) > stoppingDistance)
+            this.transform.position += direction*speed;  
     }
+
     #endregion
 
 }
