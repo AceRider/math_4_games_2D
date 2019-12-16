@@ -39,10 +39,35 @@ public class HolisticMath
         return Mathf.Acos(dorDivide); //radians. For degrees * 180/MathPI;
     }
 
-    static public Coords Rotate(Coords vector, float angle)
+    static public Coords LookAt2D(Coords forwardvector, Coords position, Coords focusPoint)
     {
+        Coords direction = new Coords(focusPoint.x - position.x, focusPoint.y - position.y, position.z);
+        float angle = HolisticMath.Angle(forwardvector, direction);
+        bool clockwise = false;
+        if (HolisticMath.Cross(forwardvector, direction).z < 0)
+            clockwise = true;
+        Coords newDir = HolisticMath.Rotate(forwardvector, angle, clockwise);
+        return newDir;
+    }
+
+    static public Coords Rotate(Coords vector, float angle, bool clockwise)
+    {
+        if(clockwise)
+        {
+            angle = 2 * Mathf.PI - angle;
+        }
+
         float xVal = vector.x * Mathf.Cos(angle) - vector.y * Mathf.Sin(angle);
         float yVal = vector.x * Mathf.Sin(angle) + vector.y * Mathf.Cos(angle);
         return new Coords(xVal, yVal, 0);
+    }
+
+    static public Coords Cross(Coords vector1, Coords vector2)
+    {
+        float xMult = vector1.y * vector2.z - vector1.z * vector2.y;
+        float yMult = vector1.z * vector2.x - vector1.x * vector2.z;
+        float zMult = vector1.x * vector2.y - vector1.y * vector2.x;
+        Coords crossProd = new Coords(xMult, yMult, zMult);
+        return crossProd;
     }
 }
