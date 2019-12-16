@@ -85,7 +85,9 @@ public class Drive : MonoBehaviour
         Coords dirNormal = HolisticMath.GetNormal(new Coords(direction));
         direction = dirNormal.ToVector();
         float a = HolisticMath.Angle(new Coords(0, 1, 0), new Coords(direction)) * 180.0f / Mathf.PI;
-        Debug.Log("Angle to fuel:" + a);
+        //Debug.Log("Angle to fuel:" + a);
+        Coords newDir = HolisticMath.Rotate(new Coords(0, 1, 0), a);
+        this.transform.up = new Vector3(newDir.x, newDir.y, newDir.z);
     }
 
     private void Update()
