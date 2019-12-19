@@ -20,6 +20,16 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void SetAngle(string amt)
+    {
+        float n;
+        if (float.TryParse(amt, out n))
+        {
+            n *= Mathf.PI / 180.0f;
+            tank.transform.up = HolisticMath.Rotate(new Coords(tank.transform.up), n, false).ToVector();
+        }
+    }
+
     void Start()
     {
         tankPosition.text = tank.transform.position + "";
